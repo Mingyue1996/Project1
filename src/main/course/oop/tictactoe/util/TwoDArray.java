@@ -12,6 +12,7 @@ public class TwoDArray {
 	int [][] TwoD_Array;
 	int arrayRow;
 	int arrayCol;
+	int defaultValue;
 	
 	public TwoDArray(int rows, int cols, int defaultVal){
 		/*TODO - Create a 2D integer array consisting of 
@@ -21,6 +22,7 @@ public class TwoDArray {
 		TwoD_Array = initializeArray(rows, cols, defaultVal);
 		arrayRow = rows;
 		arrayCol = cols;
+		defaultValue = defaultVal;
 	}
 	
 	public void initArray(int defaultVal) {
@@ -44,7 +46,22 @@ public class TwoDArray {
 		 * Note: Print the int value in place of (). 
 		 * e.g., replace (val) with val.
 		 */
-		return "Not implemented";
+		
+		// val is the default value
+		if (defaultValue == val) {
+			return "Failure: " + val + " is not allowed.";
+		}
+		
+		// Successful insertion
+		else if (TwoD_Array[row][col] == defaultValue) {
+			TwoD_Array[row][col] = val;
+			return "Success! " + val + " was inserted.";
+		}
+		
+		// The value is not the default value
+		else {
+			return "Failure: [" + row + "][" + col + "] is not empty.";
+		}
 	}
 	
 	public int getInt(int row, int col) {
@@ -52,7 +69,7 @@ public class TwoDArray {
 		 * 
 		 */
 		
-		return 0;
+		return TwoD_Array[row][col];
 	}
 	
 	public String getArrayDisplay() {
