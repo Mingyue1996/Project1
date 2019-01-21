@@ -1,5 +1,5 @@
 package main.course.oop.tictactoe.util;
-
+import java.util.ArrayList;
 /**
  * You must implement the following methods to accept the expected 
  * parameters and return accurate results.
@@ -73,6 +73,7 @@ public class TwoDArray {
 	}
 	
 	public String getArrayDisplay() {
+		String array_string = "";
 		/*TODO - Create a 2D display of the Array
 		 * e.g. 
 		 * 	1	0	1
@@ -81,10 +82,18 @@ public class TwoDArray {
 		 * 
 		 */
 		
+//		for (int i = 0; i < arrayRow; i++) {
+//			for (int j = 0; j < arrayCol; j++) {
+//			
+//			}
+//		}
+		
 		return "Not implemented";
 	}
 	
 	public String getArrayDetails() {
+		String array_details = "";
+		int index = 0;
 		/*TODO - List the following:
 		 * # rows
 		 * # columns
@@ -96,8 +105,39 @@ public class TwoDArray {
 		 * 			)
 		 * 
 		 */
+		array_details += ("# rows: " + arrayRow + "\n");
+		array_details += ("# columns: " + arrayCol + "\n");
 		
-		return "Not implemented";
+		// create an array to count unique values
+		ArrayList<Integer> uniqueArray = new ArrayList<>();
+		ArrayList<Integer> countArray = new ArrayList<>();
+		
+		for (int i = 0; i < arrayRow; i++) {
+			for (int j = 0; j < arrayCol; j++) {
+				// the value is not in the uniqueArray
+				if (uniqueArray.size() == 0 || !uniqueArray.contains(TwoD_Array[i][j])) {
+					// add the value to the uniqueArray
+					uniqueArray.add(TwoD_Array[i][j]);
+					// update countArray
+					countArray.add(uniqueArray.indexOf(TwoD_Array[i][j]), 1);
+				}
+				
+				// the value is in the uniqueArray
+				else {
+					// update countArray
+					index = uniqueArray.indexOf(TwoD_Array[i][j]);
+					countArray.set(index, countArray.get(index) + 1);
+				}
+			} // end of inner for loop
+		} // end of for loop
+		
+		array_details += "There are " + uniqueArray.size() + " unique values\n";
+        
+		// get the unique value and the count of it
+		for (int i = 0; i < uniqueArray.size(); i++) {
+			array_details += "value:" + uniqueArray.get(i) + " count:" + countArray.get(i) + "\n";
+		}
+		return array_details;
 	}	
 	
 	public int[][] initializeArray(int rows, int cols, int val) {
