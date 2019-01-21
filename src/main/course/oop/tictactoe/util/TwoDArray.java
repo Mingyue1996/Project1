@@ -80,16 +80,16 @@ public class TwoDArray {
 		 *  0	1	1
 		 * 
 		 */
-		String array_string = "\n";
+		String array_display = "\n";
 		// loop through the array and store the array content into the string
 		for (int i = 0; i < arrayRow; i++) {
 			for (int j = 0; j < arrayCol; j++) {
-				array_string += String.format("%-5d", TwoD_Array[i][j]);
+				array_display += String.format("%-5d", TwoD_Array[i][j]);
 			}
-			array_string += "\n";
+			array_display += "\n";
 		}
 		
-		return array_string;
+		return array_display;
 	}
 	
 	public String getArrayDetails() {
@@ -116,11 +116,11 @@ public class TwoDArray {
 		for (int i = 0; i < arrayRow; i++) {
 			for (int j = 0; j < arrayCol; j++) {
 				// the value is not in the uniqueArray
-				if (uniqueArray.size() == 0 || !uniqueArray.contains(TwoD_Array[i][j])) {
+				if (!uniqueArray.contains(TwoD_Array[i][j])) {
 					// add the value to the uniqueArray
 					uniqueArray.add(TwoD_Array[i][j]);
 					// update countArray
-					countArray.add(uniqueArray.indexOf(TwoD_Array[i][j]), 1);
+					countArray.add(1);
 				}
 				
 				// the value is in the uniqueArray
@@ -132,11 +132,17 @@ public class TwoDArray {
 			} // end of inner for loop
 		} // end of for loop
 		
-		array_details += "There are " + uniqueArray.size() + " unique values\n";
-        
+		// get the number of unique values
+		if (uniqueArray.size() > 1) {
+			array_details += "There are " + uniqueArray.size() + " unique values\n";
+		}
+		else {
+			array_details += "There is " + uniqueArray.size() + " unique value\n";
+		}
+		  
 		// get the unique value and the count of it
 		for (int i = 0; i < uniqueArray.size(); i++) {
-			array_details += "value:" + uniqueArray.get(i) + " count:" + countArray.get(i) + "\n";
+			array_details += String.format("value:%-5d count: %-5d%n", uniqueArray.get(i), countArray.get(i));
 		}
 		return array_details;
 	}	
