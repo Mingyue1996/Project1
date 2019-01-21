@@ -73,7 +73,6 @@ public class TwoDArray {
 	}
 	
 	public String getArrayDisplay() {
-		String array_string = "";
 		/*TODO - Create a 2D display of the Array
 		 * e.g. 
 		 * 	1	0	1
@@ -81,19 +80,19 @@ public class TwoDArray {
 		 *  0	1	1
 		 * 
 		 */
+		String array_string = "\n";
+		// loop through the array and store the array content into the string
+		for (int i = 0; i < arrayRow; i++) {
+			for (int j = 0; j < arrayCol; j++) {
+				array_string += String.format("%-5d", TwoD_Array[i][j]);
+			}
+			array_string += "\n";
+		}
 		
-//		for (int i = 0; i < arrayRow; i++) {
-//			for (int j = 0; j < arrayCol; j++) {
-//			
-//			}
-//		}
-		
-		return "Not implemented";
+		return array_string;
 	}
 	
 	public String getArrayDetails() {
-		String array_details = "";
-		int index = 0;
 		/*TODO - List the following:
 		 * # rows
 		 * # columns
@@ -105,6 +104,8 @@ public class TwoDArray {
 		 * 			)
 		 * 
 		 */
+		String array_details = "";
+		int index = 0;
 		array_details += ("# rows: " + arrayRow + "\n");
 		array_details += ("# columns: " + arrayCol + "\n");
 		
