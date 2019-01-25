@@ -8,6 +8,11 @@ import java.util.ArrayList;
  * 
  *
  */
+
+/*
+ * GitHub username: Mingyue1996
+ * A link to this project’s repository: https://github.com/Mingyue1996/Project1
+ * */
 public class TwoDArray {
 	int [][] TwoD_Array;
 	int arrayRow;
